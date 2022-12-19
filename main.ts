@@ -65,21 +65,18 @@ const logFakeEvent = () => {
 };
 
 let count = 0;
-const startEventLogging = () => {
-  logFakeEvent()
-    .then(() => {
-      count++;
-    })
-    .catch((err) => {
-      console.log("error", err);
-    });
-};
 
-const logFakeEventsForEvery30Seconds = () => {
+const startEventLogging = () => {
   const timer = setInterval(() => {
     console.log("total count", count);
-    startEventLogging();
+    logFakeEvent()
+      .then(() => {
+        count++;
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
   }, 2500);
 };
 
-logFakeEventsForEvery30Seconds();
+startEventLogging();
