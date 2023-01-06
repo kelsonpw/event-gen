@@ -16,7 +16,7 @@ const createBatchEvents = (size: number) => {
       user_id: userProperties.user_id,
       device_id: userProperties.device_id,
       event_type: event.event_type,
-      time: faker.date.past().getTime(),
+      time: new Date().getTime(),
       event_properties: event.event_properties,
       user_properties: userProperties,
     };
