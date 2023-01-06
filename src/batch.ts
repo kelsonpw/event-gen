@@ -42,17 +42,21 @@ const sendBatch = (size: number) => {
   return fetch(BATCH_API, options);
 };
 
-const size = Number(process.argv.slice(2)[0]);
+const size = process.argv.slice(2)[0]!;
 
-if (!size || size <= 0) {
-  throw new Error("pass size when running `node dist/batch.ts`");
+if (!size) {
+  throw new Error(
+    "You must provide a batch size when running `yarn batch`, i.e. `yarn batch 10`"
+  );
 }
 
 console.log("Sending batch of size", size);
 
-sendBatch(size).then(
+sendBatch(Number(size)).then(
   (res) => {
-    console.log(`Status: ${res.statusText}`);
+    res.json().then((json) => {
+      console.log(json);
+    });
   },
   (err) => {
     console.log(err);
