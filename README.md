@@ -4,7 +4,7 @@ It sends events to Amplitude with fake data. Each event has a unique 10 digit us
 # How to use:
 - Clone this repo
 - `yarn install`
-- Replace `API_KEY` with your project's key https://github.com/kelsonpw/event-gen/blob/85400ef518dbaf9609a54c311e2591f15021e33e/main.ts#L54
+- In `src/utils.ts`, replace `API_KEY` with your project's key
 
 # How to Run:
 - `yarn start`
