@@ -1,7 +1,8 @@
-import * as amplitude from "@amplitude/analytics-node";
 import { faker } from "@faker-js/faker";
 
-const createFakeUserProperties = () => {
+export const API_KEY = "46f7cb32e8c439edfc1b7663b79d2999";
+
+export const createFakeUserProperties = () => {
   const userProperties = {
     name: faker.name.firstName(),
     email: faker.internet.email(),
@@ -25,7 +26,7 @@ const createFakeUserProperties = () => {
   return userProperties;
 };
 
-const createFakeEventAndEventProperties = () => {
+export const createFakeEventAndEventProperties = () => {
   const eventProperties = {
     name: faker.name.firstName(),
     email: faker.internet.email(),
@@ -50,33 +51,3 @@ const createFakeEventAndEventProperties = () => {
   };
   return event;
 };
-
-amplitude.init("API_KEY");
-const logFakeEvent = () => {
-  const userProperties = createFakeUserProperties();
-  const event = createFakeEventAndEventProperties();
-
-  return amplitude.logEvent({
-    event_type: event.event_type,
-    event_properties: event.event_properties,
-    user_id: userProperties.user_id,
-    user_properties: userProperties,
-  }).promise;
-};
-
-let count = 0;
-
-const startEventLogging = () => {
-  const timer = setInterval(() => {
-    console.log("total count", count);
-    logFakeEvent()
-      .then(() => {
-        count++;
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  }, 2500);
-};
-
-startEventLogging();

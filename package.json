@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc main.ts",
-    "start": "yarn build && node main.js"
+    "build": "tsc",
+    "start": "yarn build && node dist/main.js",
+    "batch": "yarn build && node dist/batch.js"
   },
   "devDependencies": {
     "@types/node": "^18.11.15",
