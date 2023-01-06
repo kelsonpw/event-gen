@@ -8,3 +8,6 @@ It sends events to Amplitude with fake data. Each event has a unique 10 digit us
 
 # How to Run:
 - `yarn start`
+
+# How to Run Batch:
+- `yarn batch 50` (where 50 is the number of events you want to send)
