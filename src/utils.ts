@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export const API_KEY = "46f7cb32e8c439edfc1b7663b79d2999";
+export const API_KEY = "API_KEY";
 
 export const createFakeUserProperties = () => {
   const userProperties = {
